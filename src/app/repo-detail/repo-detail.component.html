@@ -1,0 +1,11 @@
+<div>
+    <ul class="commits">
+      <li *ngFor="let commit of commits">
+        {{ commit.sha }} -
+        <span class="message">{{commit.message}}</span><br>
+        by <span class="author">{{commit.author}}</span>
+        at <span class="date">{{commit.date}}</span><br>
+      </li>
+
+    </ul>
+</div>

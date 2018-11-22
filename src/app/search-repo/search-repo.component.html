@@ -1,0 +1,14 @@
+<div>
+    <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Find a repository" />
+    <ul id="suggest-list">
+      <li *ngFor="let repo of repos$ | async">
+        <div class="repo-info">
+          <!-- <h3><a [href]="repo.url">{{repo.name}}</a></h3> -->
+          <h3><a routerLink="/repo/{{repo.name}}">{{repo.name}}</a></h3>
+          <span class="language">{{repo.language}}</span>
+          Updated
+          <span class="last-update">{{repo.updated_at}}</span>
+        </div>
+      </li>
+    </ul>
+  </div>

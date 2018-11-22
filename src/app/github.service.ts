@@ -32,8 +32,8 @@ export class GithubService {
     );
   }
 
-  getCommits(): Observable<Commit[]> {
-    const resource = '/repos/sydchen/todolist/commits';
+  getCommits(owner, repo): Observable<Commit[]> {
+    const resource = `/repos/${owner}/${repo}/commits`;
     return this.http.get<Commit[]>(`${this.githubApiUrl}${resource}`)
       .pipe(
         map(resp =>
