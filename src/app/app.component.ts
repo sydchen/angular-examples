@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
-import { Commit, Repo } from './commit';
+import { Commit, Repo } from './models/github';
 import { GithubService } from './github.service';
 
 @Component({
@@ -22,11 +22,10 @@ export class AppComponent implements OnInit {
     this.repos$ = this.searchTerms.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap((term: string) => this.githubService.searchRepos(term)),
-    ).subscribe();    
-    this.getCommits();
+      switchMap((term: string) => this.githubService.searchRepos(term))
+    );
   }
-  
+
   search(term: string): void {
     console.log("search: " + term);
     this.searchTerms.next(term);

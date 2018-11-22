@@ -1,13 +1,23 @@
 <div>
   <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <ul id="suggest-list">
+    <li *ngFor="let repo of repos$ | async">
+      <div class="repo-info">
+        <h3><a [href]="repo.url">{{repo.name}}</a></h3>
+        <span class="language">{{repo.language}}</span>
+        Updated
+        <span class="last-update">{{repo.updated_at}}</span>
+      </div>
+    </li>
+  </ul>
 </div>
 
 <div>
   <ul class="commits">
     <li *ngFor="let commit of commits">
-      {{ commit.sha}} - 
+      {{ commit.sha}} -
       <span class="message">{{commit.message}}</span><br>
-      by <span class="author">{{commit.author}}</span> 
+      by <span class="author">{{commit.author}}</span>
       at <span class="date">{{commit.date}}</span><br>
     </li>
 

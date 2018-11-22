@@ -6,8 +6,7 @@ export interface Commit {
 }
 
 export interface Repo {
-    sha: string;
-    message: string;
-    author: string;
-    date: string;
+    name: string;
+    url: string;
+    language: string;
 }
